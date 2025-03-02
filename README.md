@@ -4,7 +4,7 @@ JPEG XL reader for Delphi, Free Pascal, Lazarus
 
 ## Uwage examples
 ```
-  Image1.Picture.LoadFromFile('test.tif');
+  Image1.Picture.LoadFromFile('test.jxl');
 ```
 
 ## This unit uses LibJXL:
