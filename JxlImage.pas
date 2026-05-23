@@ -169,6 +169,7 @@ type
     procedure SetLossyCompression(Value: Cardinal);
     procedure SetLosslessCompression;
     procedure Assign(Source: TPersistent); override;
+    procedure AssignTo(Dest: TPersistent); override;
     procedure LoadFromStream(Stream: TStream); override;
     procedure SaveToStream(Stream: TStream); override;
     constructor Create; override;
@@ -331,6 +332,16 @@ begin
     FBmp.SetSize(Src.Width, Src.Height);
     FBmp.Canvas.Draw(0,0, Src);
   end;
+end;
+
+procedure TJxlImage.AssignTo(Dest: TPersistent);
+begin
+  if Dest is TBitmap then begin
+    TBitmap(Dest).Assign(FBmp);
+    Exit;
+  end;
+
+  inherited AssignTo(Dest);
 end;
 
 procedure TJxlImage.LoadFromStream(Stream: TStream);
